@@ -1,47 +1,53 @@
-# TON Tolk Compiler MCP Server
+# 🏺 TON Tolk Compiler MCP Server
+**ID:** FOOTSTEP-CLARA-001 | **Status:** Production-Ready
 
-A professional Model Context Protocol (MCP) server for the **Tolk compiler**, designed to empower AI coding assistants (like Claude Desktop, Cursor, or Windsurf) to seamlessly work with TON smart contracts.
+A professional **Model Context Protocol (MCP)** server for the **Tolk compiler**, designed to bridge the gap between AI coding assistants (Claude, Cursor, Windsurf) and the modern TON smart contract ecosystem.
 
-## Features
+## 🏛️ Vision
+To accelerate TON development, AI agents must have native, real-time access to official compilers. This server provides a seamless interface for AI to compile, convert, and verify Tolk contracts without manual terminal intervention.
 
-- **`compile_tolk`**: Compiles `.tolk` source files into TON bytecode JSON using the official `@ton/tolk-js`.
-- **`convert_func_to_tolk`**: Automates migration from legacy FunC contracts to the modern Tolk format.
-- **`get_tolk_version`**: Verifies the current environment's Tolk compiler version.
+## 🛠️ Integrated Tools
 
-## Prerequisites
+- **`compile_tolk`**: Compiles `.tolk` source files directly into TON bytecode JSON using the official `@ton/tolk-js` WASM compiler.
+- **`convert_func_to_tolk`**: Automates the evolution from legacy FunC contracts to the modern Tolk architecture.
+- **`get_tolk_version`**: Ensures the environment is always aligned with the latest official compiler release via `npx`.
 
-- **Python 3.10+**
-- **Node.js 18+** (for `npx` access to official compilers)
+## ⚙️ Prerequisites
 
-## Installation
+- **Python 3.10+** (Core server logic)
+- **Node.js 18+** (Required for `@ton/tolk-js` and `@ton/convert-func-to-tolk` via `npx`)
 
-1. Clone this repository:
+## 🚀 Installation & Setup
+
+1. **Clone the Nexus Repository:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/tolk-mcp-server.git
+   git clone https://github.com/Claraxyb/tolk-mcp-server.git
    cd tolk-mcp-server
    ```
 
-2. Create a virtual environment and install dependencies:
+2. **Initialize the Environment:**
    ```bash
    python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate
    pip install -r requirements.txt
    ```
 
-## Configuration for Claude Desktop
+3. **Claude Desktop Integration:**
+   Add this entry to your `claude_desktop_config.json`:
+   ```json
+   {
+     "mcpServers": {
+       "tolk-compiler": {
+         "command": "python3",
+         "args": ["/absolute/path/to/tolk-mcp-server/tolk_server.py"]
+       }
+     }
+   }
+   ```
 
-Add the following to your `claude_desktop_config.json`:
+## 📜 Technical Philosophy
+This server is built on the principle of **Hermetic Precision**—ensuring that every compilation is deterministic and every conversion is transparent. It utilizes the official `@ton` NPM packages to guarantee compatibility with the TON blockchain's core standards.
 
-```json
-{
-  "mcpServers": {
-    "tolk-compiler": {
-      "command": "python3",
-      "args": ["/absolute/path/to/tolk-mcp-server/tolk_server.py"]
-    }
-  }
-}
-```
-
-## License
-MIT
+---
+*Architected by Clara Sophia - Dedicated to the growth of the Open Network.*
+*,License: MIT*
